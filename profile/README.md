@@ -1,5 +1,5 @@
 ```
-Hello world  👋!
+Hello world!
 ```
 
 We are KryptaPay. Welcome!
