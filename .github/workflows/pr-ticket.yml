@@ -1,0 +1,45 @@
+# Verification commune a tous les depots : chaque PR est liee a une carte
+# Trello ou a une issue GitHub (regles : scripts/check-ticket.sh).
+#
+# Dans chaque depot, .github/workflows/ticket.yml :
+#
+#   name: Ticket
+#   on:
+#     pull_request:
+#       types: [opened, edited, reopened, synchronize, labeled, unlabeled]
+#   permissions:
+#     contents: read
+#     issues: read
+#     pull-requests: read
+#   jobs:
+#     ticket:
+#       name: Ticket
+#       uses: KryptaPay-Bj/.github/.github/workflows/pr-ticket.yml@main
+name: PR ticket
+
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
+jobs:
+  check:
+    name: Trello ou issue
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # Le script vient de ce depot (public), jamais de la branche de la PR.
+      - uses: actions/checkout@v4
+        with:
+          repository: KryptaPay-Bj/.github
+          ref: main
+          persist-credentials: false
+      - name: Verifier le ticket
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: bash scripts/check-ticket.sh

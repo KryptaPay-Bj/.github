@@ -4,13 +4,24 @@ Base : test pour api et web, main pour les autres depots.
 Merger = deployer : sur test pour api et web, en prod directement pour les autres.
 -->
 
+## Ticket
+
+<!--
+Obligatoire, une des deux formes :
+  Ticket: https://trello.com/c/...
+  Closes #12   (ou Refs KryptaPay-Bj/kryptapay-api#12 pour une issue d'un autre depot)
+Urgence sans ticket : « Ticket: none — raison » et le label no-ticket.
+-->
+
+Ticket:
+
 ## Quoi
 
 <!-- Ce que la PR change, en 2-3 phrases. -->
 
 ## Pourquoi
 
-<!-- Le probleme ou la demande d'origine (lien vers le ticket ou le fil si possible). -->
+<!-- Le probleme ou la demande d'origine. -->
 
 ## Comment tester
 
